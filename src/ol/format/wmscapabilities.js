@@ -610,6 +610,7 @@ ol.format.WMSCapabilities.LAYER_PARSERS_ = ol.xml.makeStructureNS(
       'KeywordList': ol.xml.makeObjectPropertySetter(
           ol.format.WMSCapabilities.readKeywordList_),
       'CRS': ol.xml.makeObjectPropertyPusher(ol.format.XSD.readString),
+      'SRS': ol.xml.makeObjectPropertyPusher(ol.format.XSD.readString),
       'EX_GeographicBoundingBox': ol.xml.makeObjectPropertySetter(
           ol.format.WMSCapabilities.readEXGeographicBoundingBox_),
       'BoundingBox': ol.xml.makeObjectPropertyPusher(
