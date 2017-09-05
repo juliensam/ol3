@@ -588,6 +588,16 @@ ol.interaction.Snap.prototype.writePolygonGeometry_ = function(feature, geometry
 
 
 /**
+ * Set pixel tolerance.
+ * @param {number} pixelTolerance Tolerance in pixels.
+ * @api
+ */
+ol.interaction.Snap.prototype.setPixelTolerance = function(pixelTolerance) {
+  this.pixelTolerance_ = pixelTolerance;
+};
+
+
+/**
  * Handle all pointer events events.
  * @param {ol.MapBrowserEvent} evt A move event.
  * @return {boolean} Pass the event to other interactions.
