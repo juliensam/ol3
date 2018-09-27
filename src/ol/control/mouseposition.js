@@ -100,7 +100,6 @@ ol.control.MousePosition.render = function(mapEvent) {
       this.transform_ = null;
     }
   }
-  this.updateHTML_(this.lastMouseMovePixel_);
 };
 
 
@@ -171,7 +170,11 @@ ol.control.MousePosition.prototype.setMap = function(map) {
     this.listenerKeys.push(
         ol.events.listen(viewport, ol.events.EventType.MOUSEMOVE,
             this.handleMouseMove, this),
+        ol.events.listen(viewport, ol.events.EventType.TOUCHSTART,
+            this.handleMouseMove, this),
         ol.events.listen(viewport, ol.events.EventType.MOUSEOUT,
+            this.handleMouseOut, this),
+        ol.events.listen(viewport, ol.events.EventType.TOUCHEND,
             this.handleMouseOut, this)
     );
   }
