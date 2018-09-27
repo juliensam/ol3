@@ -326,7 +326,6 @@ ol.pointer.TouchSource.prototype.overDown_ = function(browserEvent, inPointer) {
  * @param {Event} inEvent The in event.
  */
 ol.pointer.TouchSource.prototype.touchmove = function(inEvent) {
-  inEvent.preventDefault();
   this.processTouches_(inEvent, this.moveOverOut_);
 };
 

@@ -194,6 +194,9 @@ ol.interaction.Pointer.handleEvent = function(mapBrowserEvent) {
   } else {
     if (mapBrowserEvent.type == ol.MapBrowserEventType.POINTERDOWN) {
       var handled = this.handleDownEvent_(mapBrowserEvent);
+      if (handled) {
+        mapBrowserEvent.preventDefault();
+      }
       this.handlingDownUpSequence = handled;
       stopEvent = this.shouldStopEvent(handled);
     } else if (mapBrowserEvent.type == ol.MapBrowserEventType.POINTERMOVE) {
