@@ -372,7 +372,8 @@ ol.source.TileUTFGrid.Tile_.prototype.getData = function(coordinate) {
  * @template T
  */
 ol.source.TileUTFGrid.Tile_.prototype.forDataAtCoordinate = function(coordinate, callback, opt_this, opt_request) {
-  if (this.state == ol.TileState.IDLE && opt_request === true) {
+  if (this.state == ol.TileState.EMPTY && opt_request === true) {
+    this.state = ol.TileState.IDLE;
     ol.events.listenOnce(this, ol.events.EventType.CHANGE, function(e) {
       callback.call(opt_this, this.getData(coordinate));
     }, this);
@@ -477,5 +478,7 @@ ol.source.TileUTFGrid.Tile_.prototype.onXHRError_ = function(event) {
 ol.source.TileUTFGrid.Tile_.prototype.load = function() {
   if (this.preemptive_) {
     this.loadInternal_();
+  } else {
+    this.setState(ol.TileState.EMPTY);
   }
 };
