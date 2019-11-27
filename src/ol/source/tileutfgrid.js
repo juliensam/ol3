@@ -416,7 +416,7 @@ ol.source.TileUTFGrid.Tile_.prototype.handleLoad_ = function(json) {
   this.keys_ = json.keys;
   this.data_ = json.data;
 
-  this.state = ol.TileState.EMPTY;
+  this.state = ol.TileState.LOADED;
   this.changed();
 };
 
