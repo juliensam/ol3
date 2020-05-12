@@ -438,7 +438,7 @@ ol.source.TileUTFGrid.Tile_.prototype.loadInternal_ = function() {
       // If the length of the url is more than 1024, do a POST
       // request instead.
       var url = this.src_;
-      if (url.length > 1024) {
+      if (url.length < 1024) {
         client.open('GET', url);
         client.send();
       } else {
