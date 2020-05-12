@@ -434,8 +434,19 @@ ol.source.TileUTFGrid.Tile_.prototype.loadInternal_ = function() {
       var client = new XMLHttpRequest();
       client.addEventListener('load', this.onXHRLoad_.bind(this));
       client.addEventListener('error', this.onXHRError_.bind(this));
-      client.open('GET', this.src_);
-      client.send();
+
+      // If the length of the url is more than 1024, do a POST
+      // request instead.
+      var url = this.src_;
+      if (url.length > 1024) {
+        client.open('GET', url);
+        client.send();
+      } else {
+        var urlParts = url.split('?');
+        client.open('POST', urlParts[0]);
+        client.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        client.send(urlParts[1]);
+      }
     }
   }
 };
